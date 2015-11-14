@@ -1,0 +1,18 @@
+0        PROG     start   0                                
+0        FIRST    LDA     #0                    010000     
+3                 J       CONT                  3F2FF9     
+6        BUF      RESW    10                 .Text record should be broken here!              
+36       TEMP     EQU     BLABLA             .ERROR! Undefined symbol              ******	Illegal Expression.
+36       TEN      EQU     10                               
+36       SIXTY    WORD    12+TEN*5-7/3       .general expression = (60)dec = (3A)hex. OR ERROR! if general expression no supported              ******	Operand doesn't exist.
+36       CONT     LDT     =X'ABCDEF'         .literal (hex) or ERROR! if literals are not supported              ******	Operand doesn't exist.
+36                LDS     =C'ABC'            .literal (hex) or ERROR! if literals are not supported              ******	Operand doesn't exist.
+36                J       *                     3F0024     
+39                LTORG                      .LTORG statement or WARNING if not supported              ******	Illegal operand(s).
+39       LBL1     WORD    7                     000007     
+42                ORG     LBL1               .ORG statment              
+39       LBL1BKUP RESW    1                                
+42       LBL2     WORD    30                    00001E     
+45       LBL3     WORD    60                    00003C     
+48       BUF2     RESB    12                               
+60                END     FIRST                            

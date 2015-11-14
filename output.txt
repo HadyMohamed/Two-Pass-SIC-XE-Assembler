@@ -1,0 +1,41 @@
+1                    .       ..     ...                ..
+2       000000       PROG     start   0
+3       000000       FIRST    LDA     #0
+4       000003                J       CONT
+5       000006       BUF      RESW    10                 .Text record should be broken here!
+6       000024       TEMP     EQU     BLABLA             .ERROR! Undefined symbol
+                     ****Illegal Expression.
+7       000024       TEN      EQU     10
+8       000024       SIXTY    WORD    12+TEN*5-7/3       .general expression = (60)dec = (3A)hex. OR ERROR! if general expression no supported
+                     ****Illegal operand(s).
+9       000024       CONT     LDT     =X'ABCDEF'         .literal (hex) or ERROR! if literals are not supported
+                     ****Illegal operand(s).
+10      000024                LDS     =C'ABC'            .literal (hex) or ERROR! if literals are not supported
+                     ****Illegal operand(s).
+11      000024                J       *
+12                   ............. Rest of Data ..............
+13      000027                LTORG                      .LTORG statement or WARNING if not supported
+                     ****Illegal operand(s).
+14      000027       LBL1     WORD    7
+15      00002A                ORG     LBL1               .ORG statment
+16      000027       LBL1BKUP RESW    1
+17      00002A       LBL2     WORD    30
+18      00002D       LBL3     WORD    60
+19      000030       BUF2     RESB    12
+20      00003C                END     FIRST
+
+
+**********************SYMBOL TABLE**************************
+
+			Symbol		Address
+			buf		000006
+			buf2		000030
+			cont		FFFFFF
+			first		000000
+			lbl1		000027
+			lbl1bkup		000027
+			lbl2		00002A
+			lbl3		00002D
+			sixty		FFFFFF
+			temp		FFFFFF
+			ten		00000A
